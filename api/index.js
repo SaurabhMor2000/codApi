@@ -14,15 +14,12 @@ const uploadMiddleware = multer({dest : 'uploads/'});
 const secret =  'qwertyuiopasdfghjkl';
 const fs = require('fs');
 
-// const corsOptions = {
-//   credentials: true,
-//    // Allow requests from this origin
-// };
-app.use((req, res, next) => {
-  res.header({"Access-Control-Allow-Origin": "*"});
-  next();
-}) 
-// app.use(cors(corsOptions));
+const corsOptions = {
+  credentials: true,
+  origin:"https://64e8653749455a4d9c0b327f--meek-malasada-9c02aa.netlify.app"
+   // Allow requests from this origin
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
