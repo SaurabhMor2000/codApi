@@ -18,7 +18,10 @@ const corsOptions = {
   credentials: true,
    // Allow requests from this origin
 };
-
+app.use((req, res, next) => {
+  res.header({"Access-Control-Allow-Origin": "*"});
+  next();
+}) 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
